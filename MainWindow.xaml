@@ -1,0 +1,170 @@
+﻿<Window x:Name="mainWindow" x:Class="AppPh.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppPh"
+        mc:Ignorable="d"
+       Width="1024" Height="768"
+        MinHeight="768"
+        MinWidth="1024"
+        WindowStartupLocation="CenterScreen"
+         Loaded="window_Loaded" Closing="Window_Closing" Title="Смоделируй портрет" SizeChanged="mainWindow_SizeChanged">
+    <Window.Resources>
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <GradientStop Color="#EBEBEB" Offset="0.5"/>
+            <GradientStop Color="#DDDDDD" Offset="0.5"/>
+            <GradientStop Color="#CDCDCD" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid x:Name="parentGrid" Background="#FFEDFDED" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="862*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Canvas  HorizontalAlignment="Center" Height="237" Margin="5,10,5,0" VerticalAlignment="Top" Width="993" x:Name="mainGrid" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+
+
+            <Button x:Name="M_left_b" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="Transparent" VerticalAlignment="Top" Width="32" Height="126" Canvas.Left="8" RenderTransformOrigin="0.5,0.5" Click="button1_Copy_Click" Canvas.Top="26" MouseLeftButtonDown="left_arrow_MouseDown" MouseLeave="M_left_b_MouseLeave" >
+                <Image x:Name="left_arrow" Source="images/arrows/le.png" MouseLeftButtonDown="left_arrow_MouseDown" MouseMove="left_arrow_MouseMove"/>
+            </Button>
+            <Button x:Name="M_right_b" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" BorderThickness="0,0,0,0" Background="Transparent" VerticalAlignment="Top" Width="32" Height="125"  RenderTransformOrigin="0.5,0.5" Canvas.Left="942" Click="button1_Click" Canvas.Top="24" MouseLeave="M_right_b_MouseLeave" >
+                <Image x:Name="right_arrow" Source="images/arrows/ri.png" MouseLeftButtonDown="right_arrow_MouseLeftButtonDown" MouseMove="right_arrow_MouseMove"/>
+            </Button>
+
+
+            <Button x:Name="ins_m" Style="{StaticResource ImageButtonStyle}"  Height="66" Canvas.Left="456" Canvas.Top="161" Width="92" Click="ins_Click" HorizontalAlignment="Center" MouseLeftButtonDown="ins_ma_MouseLeftButtonDown" MouseLeave="ins_ma_MouseLeave" >
+                <Image x:Name="ins_ma" Source="images/inim/ins_c0.png" MouseLeftButtonDown="ins_ma_MouseLeftButtonDown" MouseMove="ins_ma_MouseMove"  />
+            </Button>
+
+            <Button x:Name="button" Style="{StaticResource ImageButtonStyle}"  Height="81" Canvas.Left="364" Canvas.Top="150" Width="122" Click="button_Click_1" IsEnabled="False"  HorizontalAlignment="Center" MouseLeave="ins_l_MouseLeave" MouseLeftButtonDown="ins_l_MouseLeftButtonDown" >
+                <Image x:Name="ins_la" Source="images/inim/ins_l0.png" MouseMove="ins_la_MouseMove" MouseLeftButtonDown="ins_l_MouseLeftButtonDown" />
+            </Button>
+
+            <Button x:Name="button2" Style="{StaticResource ImageButtonStyle}"  Height="81" Canvas.Left="506" Canvas.Top="150" Width="141"  Click="button2_Click" HorizontalAlignment="Center" MouseLeave="ins_r_MouseLeave" MouseLeftButtonDown="ins_r_MouseLeftButtonDown" >
+                <Image x:Name="ins_ra" Source="images/inim/ins_r0.png" MouseMove="ins_ra_MouseMove" MouseLeftButtonDown="ins_r_MouseLeftButtonDown" />
+            </Button>
+
+        </Canvas>
+        <Canvas x:Name="Canva" HorizontalAlignment="Center" Margin="13,181,11,87" VerticalAlignment="Center" MouseMove="Canvas_MouseMove" Height="403" Width="979" Cursor="" Grid.Row="1" Grid.ColumnSpan="2">
+            <Canvas x:Name="CanvaImg" Height="402" Width="979">
+                <Image x:Name="SaveImg" Height="403" Canvas.Left="0" Canvas.Top="0" Width="979" Visibility="Hidden"/>
+                <Image x:Name="imgFace" Height="248" Canvas.Left="36" Canvas.Top="19" Width="299" AllowDrop="True"/>
+                <Image x:Name="imgEars" Height="97" Canvas.Left="36" Canvas.Top="19" Width="264"/>
+                <Image x:Name="imgNose" Height="100" Canvas.Left="117" Canvas.Top="96" Width="100"/>
+                <Image x:Name="imgEyes" Height="91" Canvas.Left="86" Canvas.Top="55" Width="181"/>
+                <Image x:Name="imgMouth" Height="100" Canvas.Left="132" Canvas.Top="167" Width="100"/>
+                <Rectangle x:Name="restBorder" Stroke="Black" Canvas.Top="0" Canvas.Left="0" Width="979" Height="403"/>
+                <InkCanvas x:Name="inkCanvas1" Height="402" Width="979" Background="{x:Null}" EditingMode="None" Cursor="Pen"/>
+            </Canvas>
+        </Canvas>
+        <Canvas x:Name="LayoutRoot" Margin="0,36,0,490" HorizontalAlignment="Center" Width="1003" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <Rectangle x:Name="sel_ce" Height="128" Canvas.Left="442" Stroke="Black" Width="128" HorizontalAlignment="Center"/>
+            <Rectangle x:Name="sel_ri" Height="100" Canvas.Left="570" Stroke="#7F808080" Width="100" HorizontalAlignment="Center" Canvas.Top="22"/>
+            <Rectangle x:Name="sel_le" Height="100" Canvas.Left="342" Stroke="#7F808080" Width="100" HorizontalAlignment="Center" Canvas.Top="22"/>
+
+
+            <Canvas x:Name="pic_time" Height="129" Width="1003" Visibility="Hidden">
+                <Image x:Name="img_white" Height="139" Width="1003" Source="images/white.png" Stretch="Fill" Canvas.Top="-5"/>
+                <Slider x:Name="sld_RedColor" Background="Red" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="210" ValueChanged="sld_Color_ValueChanged" Maximum="255" Canvas.Left="144" Canvas.Top="11"/>
+                <Slider x:Name="sld_GreenColor" Background="Green" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="210" ValueChanged="sld_Color_ValueChanged" Maximum="255" Canvas.Left="144" Canvas.Top="36"/>
+                <Slider x:Name="sld_BlueColor" Background="Blue" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="210" ValueChanged="sld_Color_ValueChanged" Maximum="255" Canvas.Left="144" Canvas.Top="61"/>
+                <Label x:Name="lbl1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="75" Width="72" Canvas.Left="374" Canvas.Top="11"/>
+                <Slider x:Name="br_size" HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Minimum="2" Canvas.Left="144" Canvas.Top="90" ValueChanged="br_size_ValueChanged" MouseMove="br_size_MouseMove" Value="6"/>
+                <Label x:Name="label" Content="Количество красного" Canvas.Left="16" Canvas.Top="11"/>
+                <Label x:Name="label1" Content="Количество зеленого" Canvas.Left="17" Canvas.Top="37"/>
+                <Label x:Name="label2" Content="Количество синего" Canvas.Left="29" Canvas.Top="60"/>
+                <Label x:Name="label3" Content="Размер кисти" Canvas.Left="55" Canvas.Top="86"/>
+                <Ellipse x:Name="el_size" Fill="Black" Height="6" Canvas.Left="375" Stroke="Black" Canvas.Top="98" Width="6"/>
+                <Button x:Name="Clean_b" Content="Ластик" Canvas.Left="466" Canvas.Top="49" Width="75" Click="Clean_b_Click"/>
+                <Button x:Name="Clear_st_b" Content="Очистить" Canvas.Left="466" Canvas.Top="90" Width="75" Click="Clear_st_b_Click"/>
+                <Button x:Name="ink_b" Content="Рисовать" Canvas.Left="466" Canvas.Top="10" Width="75" Click="ink_b_Click" IsEnabled="False"/>
+            </Canvas>
+
+
+        </Canvas>
+        <Canvas x:Name="Canv_down" HorizontalAlignment="Center" Height="87" Margin="15,0,5,0" VerticalAlignment="Bottom" Width="983" Grid.Row="1" Grid.ColumnSpan="2">
+            <Slider x:Name="MasVal" Canvas.Left="11" Canvas.Top="55" Width="972" Maximum="500" Value="100" ValueChanged="Slider_ValueChanged" Minimum="10"/>
+            <Label Content="Изменить размер:" Canvas.Left="11" Canvas.Top="25" Width="160"/>
+        </Canvas>
+        <Canvas x:Name="WellcomeCanvas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="1016" Height="738" Grid.RowSpan="2" Background="#FFEDFDED" d:IsHidden="True" d:IsLocked="True">
+            <Image x:Name="imgWC" Height="716" Canvas.Top="22" Width="1016" Source="images/wcpic.png"/>
+        </Canvas>
+        <Canvas x:Name="Canv_menu" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="993" Grid.ColumnSpan="2">
+            <Menu x:Name="MainMenu">
+                <MenuItem x:Name="FileMain" Header="_Файл" Width="56" Click="FileMain_Click" MouseMove="FileMain_MouseMove">
+                    <MenuItem Header="Новый" Click="MenuItem_Click_1" />
+
+                    <MenuItem x:Name="Open_pro" Header="Открыть проект" Click="Open_pro_Click"/>
+                    <MenuItem x:Name="s_2" Header="Сохранить проект" Click="s_2_Click"  />
+                    <MenuItem x:Name="s_2p" Header="Сохранить рисунок" Click="Button_Click" />
+
+                    <Separator />
+                    <MenuItem Header="Выход" Click="MenuItem_Click_3" />
+                </MenuItem>
+                <MenuItem x:Name="EditMenu" Header="_Правка" Width="56">
+                    <MenuItem Header="Цвет фона" Click="colBt_Click" />
+                    <MenuItem Header="Режим рисования" Click="MenuItem_Click" PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown"  />
+                </MenuItem>
+                <MenuItem x:Name="FaceMenu" Header="Лицо" Width="56"/>
+                <MenuItem x:Name="EyesMenu" Header="Глаза" Width="56"/>
+                <MenuItem x:Name="NoseMenu" Header="Нос" Width="56"/>
+                <MenuItem x:Name="EarsMenu" Header="Уши" Width="56"/>
+                <MenuItem x:Name="MouthMenu" Header="Рот" Width="56"/>
+                <MenuItem Header="_Вид" Width="56">
+                    <MenuItem x:Name="View_1" Header="Выделение" Click="MenuItem_Click_2" IsCheckable="True" IsChecked="True" />
+                    <MenuItem x:Name="View_2" Header="Цвет интерфейса" Click="View_2_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="aboutMnu" Header="О программе" Width="92" Click="aboutMnu_Click"/>
+            </Menu>
+        </Canvas>
+
+    </Grid>
+</Window>
+
